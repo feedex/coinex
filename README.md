@@ -1,6 +1,8 @@
 # feedex/coinex
 
-CoinEx adapter package for [`feedex/feedex`](https://github.com/feedex/feedex).
+CoinEx adapter package for the Feedex ecosystem.
+
+This package implements CoinEx API v2 modules and plugs into `feedex/feedex` via factory registration.
 
 ## Installation
 
@@ -8,7 +10,11 @@ CoinEx adapter package for [`feedex/feedex`](https://github.com/feedex/feedex).
 composer require feedex/feedex feedex/coinex
 ```
 
-## Usage with Feedex core
+## Compatibility
+
+- `feedex/coinex ^0.1` requires `feedex/feedex ^0.1`
+
+## Usage (recommended via Feedex core)
 
 ```php
 use Feedex\Feedex;
@@ -20,12 +26,83 @@ $feedex = (new Feedex())
 $coinex = $feedex->exchange('coinex', [
     'access_id' => getenv('COINEX_ACCESS_ID'),
     'secret_key' => getenv('COINEX_SECRET_KEY'),
+    // optional:
+    // 'base_url' => 'https://api.coinex.com',
+    // 'timeout' => 60,
 ]);
 
 $markets = $coinex->spotMarket()->listMarkets();
+$balance = $coinex->asset()->getSpotBalance();
 ```
 
-## Notes
+## Direct usage (without registry)
 
-- This package targets CoinEx API v2.
-- Depends on core contracts from `feedex/feedex`.
+```php
+use Feedex\Coinex\v2\Coinex;
+
+$coinex = new Coinex(
+    accessId: getenv('COINEX_ACCESS_ID'),
+    secretKey: getenv('COINEX_SECRET_KEY')
+);
+
+$tickers = $coinex->spotMarket()->listMarketTicker();
+```
+
+## Implemented modules
+
+### Common (public)
+- `ping()`
+- `time()`
+- `maintainInfo()`
+
+### Account (private)
+- `getAccountInfo()`
+- `getTradeFeeRate()`
+
+### Asset (private)
+- `getSpotBalance()`
+- `getFuturesBalance()`
+- `getMarginBalance()`
+- `getFinancialBalance()`
+
+### Spot Market (public)
+- `listMarkets()`
+- `listMarketTicker()`
+- `listMarketDepth()`
+- `listMarketDeals()`
+- `listMarketKline()`
+- `listMarketIndex()`
+
+### Spot Order (private)
+- `putOrder()`
+- `cancelOrder()`
+- `cancelAllOrder()`
+- `getOrderStatus()`
+- `listPendingOrder()`
+- `listFinishedOrder()`
+
+### Spot Deal (private)
+- `listUserDeals()`
+- `listUserOrderDeals()`
+
+## Authentication notes
+
+CoinEx v2 signature format used by this adapter:
+
+`METHOD + request_path(+query_string) + body + timestamp`
+
+Request headers:
+- `X-COINEX-KEY`
+- `X-COINEX-SIGN`
+- `X-COINEX-TIMESTAMP`
+
+## Core architecture integration
+
+This adapter provides:
+
+- `Feedex\Coinex\v2\Coinex` implementing Feedex exchange/capability contracts
+- `Feedex\Coinex\v2\CoinexFactory` implementing `ExchangeFactoryInterface`
+
+## License
+
+MIT
