@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Feedex\Coinex\v2\Modules;
 
-use Feedex\Contracts\Modules\SpotOrderModuleInterface;
-
-final class SpotOrder extends Module implements SpotOrderModuleInterface
+final class FuturesOrder extends Module
 {
     /**
      * @param array<string, mixed> $payload
@@ -14,7 +12,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function putOrder(array $payload): array
     {
-        return $this->privatePost('/spot/order', $payload);
+        return $this->privatePost('/futures/order', $payload);
     }
 
     /**
@@ -23,7 +21,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function putBatchOrder(array $payload): array
     {
-        return $this->privatePost('/spot/batch-order', $payload);
+        return $this->privatePost('/futures/batch-order', $payload);
     }
 
     /**
@@ -32,7 +30,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function putStopOrder(array $payload): array
     {
-        return $this->privatePost('/spot/stop-order', $payload);
+        return $this->privatePost('/futures/stop-order', $payload);
     }
 
     /**
@@ -41,7 +39,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function putBatchStopOrder(array $payload): array
     {
-        return $this->privatePost('/spot/batch-stop-order', $payload);
+        return $this->privatePost('/futures/batch-stop-order', $payload);
     }
 
     /**
@@ -50,7 +48,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function editOrder(array $payload): array
     {
-        return $this->privatePost('/spot/modify-order', $payload);
+        return $this->privatePost('/futures/modify-order', $payload);
     }
 
     /**
@@ -59,7 +57,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function editBatchOrder(array $payload): array
     {
-        return $this->privatePost('/spot/batch-modify-order', $payload);
+        return $this->privatePost('/futures/batch-modify-order', $payload);
     }
 
     /**
@@ -68,7 +66,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function editStopOrder(array $payload): array
     {
-        return $this->privatePost('/spot/modify-stop-order', $payload);
+        return $this->privatePost('/futures/modify-stop-order', $payload);
     }
 
     /**
@@ -77,7 +75,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelOrder(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-order', $payload);
+        return $this->privatePost('/futures/cancel-order', $payload);
     }
 
     /**
@@ -86,7 +84,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelOrderByClientId(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-order-by-client-id', $payload);
+        return $this->privatePost('/futures/cancel-order-by-client-id', $payload);
     }
 
     /**
@@ -95,7 +93,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelBatchOrder(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-batch-order', $payload);
+        return $this->privatePost('/futures/cancel-batch-order', $payload);
     }
 
     /**
@@ -104,7 +102,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelAllOrder(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-all-order', $payload);
+        return $this->privatePost('/futures/cancel-all-order', $payload);
     }
 
     /**
@@ -113,7 +111,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelStopOrder(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-stop-order', $payload);
+        return $this->privatePost('/futures/cancel-stop-order', $payload);
     }
 
     /**
@@ -122,7 +120,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelStopOrderByClientId(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-stop-order-by-client-id', $payload);
+        return $this->privatePost('/futures/cancel-stop-order-by-client-id', $payload);
     }
 
     /**
@@ -131,7 +129,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function cancelBatchStopOrder(array $payload): array
     {
-        return $this->privatePost('/spot/cancel-batch-stop-order', $payload);
+        return $this->privatePost('/futures/cancel-batch-stop-order', $payload);
     }
 
     /**
@@ -140,7 +138,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function getOrderStatus(array $query): array
     {
-        return $this->privateGet('/spot/order-status', $query);
+        return $this->privateGet('/futures/order-status', $query);
     }
 
     /**
@@ -149,7 +147,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function getBatchOrderStatus(array $query): array
     {
-        return $this->privateGet('/spot/batch-order-status', $query);
+        return $this->privateGet('/futures/batch-order-status', $query);
     }
 
     /**
@@ -158,7 +156,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function listPendingOrder(array $query = []): array
     {
-        return $this->privateGet('/spot/pending-order', $query);
+        return $this->privateGet('/futures/pending-order', $query);
     }
 
     /**
@@ -167,7 +165,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function listFinishedOrder(array $query = []): array
     {
-        return $this->privateGet('/spot/finished-order', $query);
+        return $this->privateGet('/futures/finished-order', $query);
     }
 
     /**
@@ -176,7 +174,7 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function listPendingStopOrder(array $query = []): array
     {
-        return $this->privateGet('/spot/pending-stop-order', $query);
+        return $this->privateGet('/futures/pending-stop-order', $query);
     }
 
     /**
@@ -185,6 +183,6 @@ final class SpotOrder extends Module implements SpotOrderModuleInterface
      */
     public function listFinishedStopOrder(array $query = []): array
     {
-        return $this->privateGet('/spot/finished-stop-order', $query);
+        return $this->privateGet('/futures/finished-stop-order', $query);
     }
 }
