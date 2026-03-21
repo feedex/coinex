@@ -8,6 +8,8 @@ use Feedex\Coinex\v2\Http\CoinexHttpClient;
 use Feedex\Coinex\v2\Modules\Account;
 use Feedex\Coinex\v2\Modules\Asset;
 use Feedex\Coinex\v2\Modules\Common;
+use Feedex\Coinex\v2\Modules\FuturesMarket;
+use Feedex\Coinex\v2\Modules\FuturesOrder;
 use Feedex\Coinex\v2\Modules\SpotDeal;
 use Feedex\Coinex\v2\Modules\SpotMarket;
 use Feedex\Coinex\v2\Modules\SpotOrder;
@@ -77,5 +79,15 @@ final class Coinex implements
     public function spotDeal(): SpotDeal
     {
         return new SpotDeal($this->httpClient);
+    }
+
+    public function futuresMarket(): FuturesMarket
+    {
+        return new FuturesMarket($this->httpClient);
+    }
+
+    public function futuresOrder(): FuturesOrder
+    {
+        return new FuturesOrder($this->httpClient);
     }
 }

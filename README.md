@@ -75,15 +75,65 @@ $tickers = $coinex->spotMarket()->listMarketTicker();
 
 ### Spot Order (private)
 - `putOrder()`
+- `putBatchOrder()`
+- `putStopOrder()`
+- `putBatchStopOrder()`
+- `editOrder()`
+- `editBatchOrder()`
+- `editStopOrder()`
 - `cancelOrder()`
+- `cancelOrderByClientId()`
+- `cancelBatchOrder()`
 - `cancelAllOrder()`
+- `cancelStopOrder()`
+- `cancelStopOrderByClientId()`
+- `cancelBatchStopOrder()`
 - `getOrderStatus()`
+- `getBatchOrderStatus()`
 - `listPendingOrder()`
 - `listFinishedOrder()`
+- `listPendingStopOrder()`
+- `listFinishedStopOrder()`
 
 ### Spot Deal (private)
 - `listUserDeals()`
 - `listUserOrderDeals()`
+
+### Futures Market (public)
+- `listMarkets()`
+- `listMarketTicker()`
+- `listMarketDepth()`
+- `listMarketDeals()`
+- `listMarketKline()`
+- `listMarketIndex()`
+- `listMarketFundingRate()`
+- `listMarketFundingRateHistory()`
+- `listMarketBasisHistory()`
+- `listMarketLiquidationHistory()`
+- `listMarketPositionLevel()`
+- `listMarketPremiumHistory()`
+
+### Futures Order (private)
+- `putOrder()`
+- `putBatchOrder()`
+- `putStopOrder()`
+- `putBatchStopOrder()`
+- `editOrder()`
+- `editBatchOrder()`
+- `editStopOrder()`
+- `cancelOrder()`
+- `cancelOrderByClientId()`
+- `cancelBatchOrder()`
+- `cancelAllOrder()`
+- `cancelStopOrder()`
+- `cancelStopOrderByClientId()`
+- `cancelBatchStopOrder()`
+- `getOrderStatus()`
+- `getBatchOrderStatus()`
+- `listPendingOrder()`
+- `listFinishedOrder()`
+- `listPendingStopOrder()`
+- `listFinishedStopOrder()`
 
 ## Authentication notes
 
