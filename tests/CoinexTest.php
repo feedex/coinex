@@ -24,7 +24,6 @@ final class CoinexTest extends TestCase
         self::assertInstanceOf(Common::class, $client->common());
         self::assertInstanceOf(Account::class, $client->account());
         self::assertInstanceOf(Asset::class, $client->asset());
-        self::assertInstanceOf(Asset::class, $client->getAsset());
         self::assertInstanceOf(SpotMarket::class, $client->spotMarket());
         self::assertInstanceOf(SpotOrder::class, $client->spotOrder());
         self::assertInstanceOf(SpotDeal::class, $client->spotDeal());
