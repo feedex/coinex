@@ -135,6 +135,10 @@ $tickers = $coinex->spotMarket()->listMarketTicker();
 - `listPendingStopOrder()`
 - `listFinishedStopOrder()`
 
+### Futures Deal (private)
+- `listUserDeals()`
+- `listUserOrderDeals()`
+
 ## Authentication notes
 
 CoinEx v2 signature format used by this adapter:
