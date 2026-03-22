@@ -11,6 +11,7 @@ use Feedex\Coinex\v2\Modules\Common;
 use Feedex\Coinex\v2\Modules\FuturesDeal;
 use Feedex\Coinex\v2\Modules\FuturesMarket;
 use Feedex\Coinex\v2\Modules\FuturesOrder;
+use Feedex\Coinex\v2\Modules\FuturesPosition;
 use Feedex\Coinex\v2\Modules\SpotDeal;
 use Feedex\Coinex\v2\Modules\SpotMarket;
 use Feedex\Coinex\v2\Modules\SpotOrder;
@@ -20,6 +21,7 @@ use Feedex\Contracts\Capabilities\HasCommonModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesDealModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesMarketModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesOrderModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesPositionModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotDealModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotMarketModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotOrderModuleInterface;
@@ -35,7 +37,8 @@ final class Coinex implements
     HasSpotDealModuleInterface,
     HasFuturesMarketModuleInterface,
     HasFuturesOrderModuleInterface,
-    HasFuturesDealModuleInterface
+    HasFuturesDealModuleInterface,
+    HasFuturesPositionModuleInterface
 {
     private CoinexHttpClient $httpClient;
 
@@ -96,5 +99,10 @@ final class Coinex implements
     public function futuresDeal(): FuturesDeal
     {
         return new FuturesDeal($this->httpClient);
+    }
+
+    public function futuresPosition(): FuturesPosition
+    {
+        return new FuturesPosition($this->httpClient);
     }
 }
