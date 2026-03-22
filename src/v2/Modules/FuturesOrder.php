@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Feedex\Coinex\v2\Modules;
 
-final class FuturesOrder extends Module
+use Feedex\Contracts\Modules\FuturesOrderModuleInterface;
+
+final class FuturesOrder extends Module implements FuturesOrderModuleInterface
 {
     /**
      * @param array<string, mixed> $payload
