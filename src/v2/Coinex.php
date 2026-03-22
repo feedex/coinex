@@ -16,6 +16,8 @@ use Feedex\Coinex\v2\Modules\SpotOrder;
 use Feedex\Contracts\Capabilities\HasAccountModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetModuleInterface;
 use Feedex\Contracts\Capabilities\HasCommonModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesMarketModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesOrderModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotDealModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotMarketModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotOrderModuleInterface;
@@ -28,7 +30,9 @@ final class Coinex implements
     HasAssetModuleInterface,
     HasSpotMarketModuleInterface,
     HasSpotOrderModuleInterface,
-    HasSpotDealModuleInterface
+    HasSpotDealModuleInterface,
+    HasFuturesMarketModuleInterface,
+    HasFuturesOrderModuleInterface
 {
     private CoinexHttpClient $httpClient;
 
