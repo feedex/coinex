@@ -12,7 +12,7 @@ composer require feedex/feedex feedex/coinex
 
 ## Compatibility
 
-- `feedex/coinex ^0.2` requires `feedex/feedex ^0.1.3`
+- `feedex/coinex ^0.2` requires `feedex/feedex ^0.1.4`
 
 ## Usage (recommended via Feedex core)
 
@@ -138,6 +138,23 @@ $tickers = $coinex->spotMarket()->listMarketTicker();
 ### Futures Deal (private)
 - `listUserDeals()`
 - `listUserOrderDeals()`
+
+### Futures Position (private)
+- `closePosition()`
+- `adjustPositionMargin()`
+- `adjustPositionLeverage()`
+- `setPositionStopLoss()`
+- `setPositionTakeProfit()`
+- `modifyPositionStopLoss()`
+- `modifyPositionTakeProfit()`
+- `cancelPositionStopLoss()`
+- `cancelPositionTakeProfit()`
+- `listPendingPosition()`
+- `listFinishedPosition()`
+- `listPositionMarginHistory()`
+- `listPositionFundingHistory()`
+- `listPositionAdlHistory()`
+- `listPositionSettleHistory()`
 
 ## Authentication notes
 

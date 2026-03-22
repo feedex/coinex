@@ -11,6 +11,7 @@ use Feedex\Coinex\v2\Modules\Common;
 use Feedex\Coinex\v2\Modules\FuturesDeal;
 use Feedex\Coinex\v2\Modules\FuturesMarket;
 use Feedex\Coinex\v2\Modules\FuturesOrder;
+use Feedex\Coinex\v2\Modules\FuturesPosition;
 use Feedex\Coinex\v2\Modules\SpotDeal;
 use Feedex\Coinex\v2\Modules\SpotMarket;
 use Feedex\Coinex\v2\Modules\SpotOrder;
@@ -31,5 +32,6 @@ final class CoinexTest extends TestCase
         self::assertInstanceOf(FuturesMarket::class, $client->futuresMarket());
         self::assertInstanceOf(FuturesOrder::class, $client->futuresOrder());
         self::assertInstanceOf(FuturesDeal::class, $client->futuresDeal());
+        self::assertInstanceOf(FuturesPosition::class, $client->futuresPosition());
     }
 }
