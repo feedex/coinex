@@ -6,7 +6,7 @@ namespace Feedex\Coinex\v2\Modules;
 
 use Feedex\Contracts\Modules\AssetModuleInterface;
 
-class Asset extends Module implements AssetModuleInterface
+final class Asset extends Module implements AssetModuleInterface
 {
     /**
      * @param array<string, mixed> $query

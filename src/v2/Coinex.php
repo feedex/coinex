@@ -61,11 +61,6 @@ final class Coinex implements
         return new Asset($this->httpClient);
     }
 
-    public function getAsset(): Asset
-    {
-        return $this->asset();
-    }
-
     public function spotMarket(): SpotMarket
     {
         return new SpotMarket($this->httpClient);
