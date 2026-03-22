@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Feedex\Coinex\v2\Modules;
 
-final class FuturesDeal extends Module
+use Feedex\Contracts\Modules\FuturesDealModuleInterface;
+
+final class FuturesDeal extends Module implements FuturesDealModuleInterface
 {
     /**
      * @param array<string, mixed> $query
