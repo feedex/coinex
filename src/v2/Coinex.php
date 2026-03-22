@@ -8,6 +8,7 @@ use Feedex\Coinex\v2\Http\CoinexHttpClient;
 use Feedex\Coinex\v2\Modules\Account;
 use Feedex\Coinex\v2\Modules\Asset;
 use Feedex\Coinex\v2\Modules\Common;
+use Feedex\Coinex\v2\Modules\FuturesDeal;
 use Feedex\Coinex\v2\Modules\FuturesMarket;
 use Feedex\Coinex\v2\Modules\FuturesOrder;
 use Feedex\Coinex\v2\Modules\SpotDeal;
@@ -88,5 +89,10 @@ final class Coinex implements
     public function futuresOrder(): FuturesOrder
     {
         return new FuturesOrder($this->httpClient);
+    }
+
+    public function futuresDeal(): FuturesDeal
+    {
+        return new FuturesDeal($this->httpClient);
     }
 }
