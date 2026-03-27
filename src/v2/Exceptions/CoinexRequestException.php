@@ -6,7 +6,7 @@ namespace Feedex\Coinex\v2\Exceptions;
 
 use RuntimeException;
 
-final class CoinexRequestException extends RuntimeException
+class CoinexRequestException extends RuntimeException
 {
     /**
      * @param array<string, mixed> $response

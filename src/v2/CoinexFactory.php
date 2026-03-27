@@ -39,6 +39,26 @@ final class CoinexFactory implements ExchangeFactoryInterface
             ? $config['timeout']
             : 60;
 
-        return new Coinex($accessId, $secretKey, $baseUrl, $timeout);
+        $maxRetries = isset($config['max_retries']) && is_int($config['max_retries'])
+            ? $config['max_retries']
+            : 0;
+
+        $retryDelayMs = isset($config['retry_delay_ms']) && is_int($config['retry_delay_ms'])
+            ? $config['retry_delay_ms']
+            : 100;
+
+        $retryBackoffMultiplier = isset($config['retry_backoff_multiplier'])
+            ? (float) $config['retry_backoff_multiplier']
+            : 2.0;
+
+        return new Coinex(
+            $accessId,
+            $secretKey,
+            $baseUrl,
+            $timeout,
+            $maxRetries,
+            $retryDelayMs,
+            $retryBackoffMultiplier
+        );
     }
 }

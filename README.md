@@ -204,6 +204,44 @@ Request headers:
 - `X-COINEX-SIGN`
 - `X-COINEX-TIMESTAMP`
 
+## Quality architecture additions
+
+### Lightweight payload builders/validators
+
+Available for complex order calls:
+- `Feedex\Coinex\v2\Payload\SpotOrderPayload`
+- `Feedex\Coinex\v2\Payload\FuturesOrderPayload`
+
+These provide reusable payload construction and basic required-key validation without heavy abstraction.
+
+### Typed error model
+
+The HTTP layer maps failures into typed exceptions:
+- `CoinexAuthenticationException`
+- `CoinexRateLimitException`
+- `CoinexValidationException`
+- `CoinexTransientException`
+- fallback: `CoinexRequestException`
+
+### Optional retry/backoff (disabled by default)
+
+You can configure retries through factory config:
+- `max_retries` (default `0`)
+- `retry_delay_ms` (default `100`)
+- `retry_backoff_multiplier` (default `2.0`)
+
+Example:
+
+```php
+$coinex = $feedex->exchange('coinex', [
+    'access_id' => 'xxx',
+    'secret_key' => 'yyy',
+    'max_retries' => 2,
+    'retry_delay_ms' => 150,
+    'retry_backoff_multiplier' => 2.0,
+]);
+```
+
 ## Core architecture integration
 
 This adapter provides:

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Feedex\Coinex\v2\Modules;
 
+use Feedex\Coinex\v2\Payload\FuturesOrderPayload;
+use Feedex\Coinex\v2\Payload\PayloadValidator;
 use Feedex\Contracts\Modules\FuturesOrderModuleInterface;
 
 final class FuturesOrder extends Module implements FuturesOrderModuleInterface
@@ -14,7 +16,17 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function putOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['market'], 'futures.order');
+
         return $this->privatePost('/futures/order', $payload);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function putOrderPayload(FuturesOrderPayload $payload): array
+    {
+        return $this->putOrder($payload->toArray());
     }
 
     /**
@@ -23,7 +35,21 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function putBatchOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['orders'], 'futures.batch-order');
+
         return $this->privatePost('/futures/batch-order', $payload);
+    }
+
+    /**
+     * @param list<FuturesOrderPayload> $orders
+     * @return array<string, mixed>
+     */
+    public function putBatchOrderPayload(array $orders): array
+    {
+        $rows = array_map(static fn (FuturesOrderPayload $payload): array => $payload->toArray(), $orders);
+        PayloadValidator::requireKeysForBatch($rows, ['market'], 'futures.batch-order.orders');
+
+        return $this->putBatchOrder(['orders' => $rows]);
     }
 
     /**
@@ -32,6 +58,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function putStopOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['market'], 'futures.stop-order');
+
         return $this->privatePost('/futures/stop-order', $payload);
     }
 
@@ -41,6 +69,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function putBatchStopOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['stop_orders'], 'futures.batch-stop-order');
+
         return $this->privatePost('/futures/batch-stop-order', $payload);
     }
 
@@ -50,6 +80,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function editOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['order_id'], 'futures.modify-order');
+
         return $this->privatePost('/futures/modify-order', $payload);
     }
 
@@ -59,6 +91,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function editBatchOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['orders'], 'futures.batch-modify-order');
+
         return $this->privatePost('/futures/batch-modify-order', $payload);
     }
 
@@ -68,6 +102,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function editStopOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['stop_id'], 'futures.modify-stop-order');
+
         return $this->privatePost('/futures/modify-stop-order', $payload);
     }
 
@@ -77,6 +113,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['order_id'], 'futures.cancel-order');
+
         return $this->privatePost('/futures/cancel-order', $payload);
     }
 
@@ -86,6 +124,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelOrderByClientId(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['client_id'], 'futures.cancel-order-by-client-id');
+
         return $this->privatePost('/futures/cancel-order-by-client-id', $payload);
     }
 
@@ -95,6 +135,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelBatchOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['order_ids'], 'futures.cancel-batch-order');
+
         return $this->privatePost('/futures/cancel-batch-order', $payload);
     }
 
@@ -113,6 +155,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelStopOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['stop_id'], 'futures.cancel-stop-order');
+
         return $this->privatePost('/futures/cancel-stop-order', $payload);
     }
 
@@ -122,6 +166,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelStopOrderByClientId(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['client_id'], 'futures.cancel-stop-order-by-client-id');
+
         return $this->privatePost('/futures/cancel-stop-order-by-client-id', $payload);
     }
 
@@ -131,6 +177,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function cancelBatchStopOrder(array $payload): array
     {
+        PayloadValidator::requireKeys($payload, ['stop_ids'], 'futures.cancel-batch-stop-order');
+
         return $this->privatePost('/futures/cancel-batch-stop-order', $payload);
     }
 
@@ -149,6 +197,8 @@ final class FuturesOrder extends Module implements FuturesOrderModuleInterface
      */
     public function getBatchOrderStatus(array $query): array
     {
+        PayloadValidator::requireKeys($query, ['order_ids'], 'futures.batch-order-status');
+
         return $this->privateGet('/futures/batch-order-status', $query);
     }
 

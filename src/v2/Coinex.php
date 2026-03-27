@@ -58,9 +58,20 @@ final class Coinex implements
         string $accessId,
         string $secretKey,
         string $baseUrl = 'https://api.coinex.com',
-        int $timeout = 60
+        int $timeout = 60,
+        int $maxRetries = 0,
+        int $retryDelayMs = 100,
+        float $retryBackoffMultiplier = 2.0
     ) {
-        $this->httpClient = new CoinexHttpClient($accessId, $secretKey, $baseUrl, $timeout);
+        $this->httpClient = new CoinexHttpClient(
+            $accessId,
+            $secretKey,
+            $baseUrl,
+            $timeout,
+            $maxRetries,
+            $retryDelayMs,
+            $retryBackoffMultiplier
+        );
     }
 
     public function id(): string
