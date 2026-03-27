@@ -6,7 +6,11 @@ namespace Feedex\Tests;
 
 use Feedex\Coinex\v2\Coinex;
 use Feedex\Coinex\v2\Modules\Account;
+use Feedex\Coinex\v2\Modules\AccountSub;
 use Feedex\Coinex\v2\Modules\Asset;
+use Feedex\Coinex\v2\Modules\AssetDepositWithdrawal;
+use Feedex\Coinex\v2\Modules\AssetLoan;
+use Feedex\Coinex\v2\Modules\AssetTransfer;
 use Feedex\Coinex\v2\Modules\Common;
 use Feedex\Coinex\v2\Modules\FuturesDeal;
 use Feedex\Coinex\v2\Modules\FuturesMarket;
@@ -25,7 +29,11 @@ final class CoinexTest extends TestCase
 
         self::assertInstanceOf(Common::class, $client->common());
         self::assertInstanceOf(Account::class, $client->account());
+        self::assertInstanceOf(AccountSub::class, $client->accountSub());
         self::assertInstanceOf(Asset::class, $client->asset());
+        self::assertInstanceOf(AssetTransfer::class, $client->assetTransfer());
+        self::assertInstanceOf(AssetDepositWithdrawal::class, $client->assetDepositWithdrawal());
+        self::assertInstanceOf(AssetLoan::class, $client->assetLoan());
         self::assertInstanceOf(SpotMarket::class, $client->spotMarket());
         self::assertInstanceOf(SpotOrder::class, $client->spotOrder());
         self::assertInstanceOf(SpotDeal::class, $client->spotDeal());

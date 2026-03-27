@@ -12,7 +12,7 @@ composer require feedex/feedex feedex/coinex
 
 ## Compatibility
 
-- `feedex/coinex ^0.2` requires `feedex/feedex ^0.1.4`
+- `feedex/coinex ^0.2` requires `feedex/feedex ^0.1.5`
 
 ## Usage (recommended via Feedex core)
 
@@ -64,6 +64,43 @@ $tickers = $coinex->spotMarket()->listMarketTicker();
 - `getFuturesBalance()`
 - `getMarginBalance()`
 - `getFinancialBalance()`
+
+### Account Sub (private)
+- `createSub()`
+- `listSub()`
+- `getSubInfo()`
+- `frozenSub()`
+- `cancelFrozenSub()`
+- `createSubApi()`
+- `listSubApi()`
+- `getSubApi()`
+- `editSubApi()`
+- `deleteSubApi()`
+- `getSubBalance()`
+- `getSubSpotBalance()`
+- `subTransfer()`
+- `listSubTransferHistory()`
+
+### Asset Transfer (private)
+- `transfer()`
+- `listTransferHistory()`
+
+### Asset Deposit/Withdrawal (private)
+- `listAssetsInfo()`
+- `getDepositAddress()`
+- `updateDepositAddress()`
+- `getDepositWithdrawalConfig()`
+- `listAllDepositWithdrawalConfig()`
+- `listDepositHistory()`
+- `listWithdrawalHistory()`
+- `withdrawal()`
+- `cancelWithdrawal()`
+
+### Asset Loan (private)
+- `marginBorrow()`
+- `marginRepay()`
+- `listMarginBorrowHistory()`
+- `listMarginInterestLimit()`
 
 ### Spot Market (public)
 - `listMarkets()`

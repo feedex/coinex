@@ -6,7 +6,11 @@ namespace Feedex\Coinex\v2;
 
 use Feedex\Coinex\v2\Http\CoinexHttpClient;
 use Feedex\Coinex\v2\Modules\Account;
+use Feedex\Coinex\v2\Modules\AccountSub;
 use Feedex\Coinex\v2\Modules\Asset;
+use Feedex\Coinex\v2\Modules\AssetDepositWithdrawal;
+use Feedex\Coinex\v2\Modules\AssetLoan;
+use Feedex\Coinex\v2\Modules\AssetTransfer;
 use Feedex\Coinex\v2\Modules\Common;
 use Feedex\Coinex\v2\Modules\FuturesDeal;
 use Feedex\Coinex\v2\Modules\FuturesMarket;
@@ -16,7 +20,11 @@ use Feedex\Coinex\v2\Modules\SpotDeal;
 use Feedex\Coinex\v2\Modules\SpotMarket;
 use Feedex\Coinex\v2\Modules\SpotOrder;
 use Feedex\Contracts\Capabilities\HasAccountModuleInterface;
+use Feedex\Contracts\Capabilities\HasAccountSubModuleInterface;
+use Feedex\Contracts\Capabilities\HasAssetDepositWithdrawalModuleInterface;
+use Feedex\Contracts\Capabilities\HasAssetLoanModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetModuleInterface;
+use Feedex\Contracts\Capabilities\HasAssetTransferModuleInterface;
 use Feedex\Contracts\Capabilities\HasCommonModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesDealModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesMarketModuleInterface;
@@ -31,7 +39,11 @@ final class Coinex implements
     ExchangeInterface,
     HasCommonModuleInterface,
     HasAccountModuleInterface,
+    HasAccountSubModuleInterface,
     HasAssetModuleInterface,
+    HasAssetTransferModuleInterface,
+    HasAssetDepositWithdrawalModuleInterface,
+    HasAssetLoanModuleInterface,
     HasSpotMarketModuleInterface,
     HasSpotOrderModuleInterface,
     HasSpotDealModuleInterface,
@@ -69,6 +81,26 @@ final class Coinex implements
     public function asset(): Asset
     {
         return new Asset($this->httpClient);
+    }
+
+    public function accountSub(): AccountSub
+    {
+        return new AccountSub($this->httpClient);
+    }
+
+    public function assetTransfer(): AssetTransfer
+    {
+        return new AssetTransfer($this->httpClient);
+    }
+
+    public function assetDepositWithdrawal(): AssetDepositWithdrawal
+    {
+        return new AssetDepositWithdrawal($this->httpClient);
+    }
+
+    public function assetLoan(): AssetLoan
+    {
+        return new AssetLoan($this->httpClient);
     }
 
     public function spotMarket(): SpotMarket
