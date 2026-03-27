@@ -65,6 +65,43 @@ $tickers = $coinex->spotMarket()->listMarketTicker();
 - `getMarginBalance()`
 - `getFinancialBalance()`
 
+### Account Sub (private)
+- `createSub()`
+- `listSub()`
+- `getSubInfo()`
+- `frozenSub()`
+- `cancelFrozenSub()`
+- `createSubApi()`
+- `listSubApi()`
+- `getSubApi()`
+- `editSubApi()`
+- `deleteSubApi()`
+- `getSubBalance()`
+- `getSubSpotBalance()`
+- `subTransfer()`
+- `listSubTransferHistory()`
+
+### Asset Transfer (private)
+- `transfer()`
+- `listTransferHistory()`
+
+### Asset Deposit/Withdrawal (private)
+- `listAssetsInfo()`
+- `getDepositAddress()`
+- `updateDepositAddress()`
+- `getDepositWithdrawalConfig()`
+- `listAllDepositWithdrawalConfig()`
+- `listDepositHistory()`
+- `listWithdrawalHistory()`
+- `withdrawal()`
+- `cancelWithdrawal()`
+
+### Asset Loan (private)
+- `marginBorrow()`
+- `marginRepay()`
+- `listMarginBorrowHistory()`
+- `listMarginInterestLimit()`
+
 ### Spot Market (public)
 - `listMarkets()`
 - `listMarketTicker()`
