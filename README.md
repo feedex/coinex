@@ -48,7 +48,36 @@ $coinex = new Coinex(
 $tickers = $coinex->spotMarket()->listMarketTicker();
 ```
 
-## Implemented modules
+## Examples
+
+See runnable scripts in [`examples/`](examples):
+- [`examples/balances.php`](examples/balances.php)
+- [`examples/spot_order.php`](examples/spot_order.php)
+- [`examples/futures_order.php`](examples/futures_order.php)
+
+## Endpoint coverage table
+
+| Domain | Visibility | Endpoints | Status |
+|---|---|---:|---|
+| Common | Public | 3 | ✅ Implemented |
+| Account | Private | 2 | ✅ Implemented |
+| Asset | Private | 4 | ✅ Implemented |
+| Account Sub | Private | 14 | ✅ Implemented |
+| Asset Transfer | Private | 2 | ✅ Implemented |
+| Asset Deposit/Withdrawal | Private | 9 | ✅ Implemented |
+| Asset Loan | Private | 4 | ✅ Implemented |
+| Spot Market | Public | 6 | ✅ Implemented |
+| Spot Order | Private | 20 | ✅ Implemented |
+| Spot Deal | Private | 2 | ✅ Implemented |
+| Futures Market | Public | 12 | ✅ Implemented |
+| Futures Order | Private | 20 | ✅ Implemented |
+| Futures Deal | Private | 2 | ✅ Implemented |
+| Futures Position | Private | 15 | ✅ Implemented |
+| **Total** |  | **115** | ✅ |
+
+> Coverage reflects the adapter’s currently exposed CoinEx v2 modules/methods.
+
+## Implemented modules (detailed)
 
 ### Common (public)
 - `ping()`
@@ -248,6 +277,10 @@ This adapter provides:
 
 - `Feedex\Coinex\v2\Coinex` implementing Feedex exchange/capability contracts
 - `Feedex\Coinex\v2\CoinexFactory` implementing `ExchangeFactoryInterface`
+
+## Changelog
+
+See [`CHANGELOG.md`](CHANGELOG.md) for clear per-release evolution of this plugin.
 
 ## License
 
