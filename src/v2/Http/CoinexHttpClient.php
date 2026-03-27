@@ -24,7 +24,8 @@ class CoinexHttpClient implements HttpClientInterface
         private readonly int $maxRetries = 0,
         private readonly int $retryDelayMs = 100,
         private readonly float $retryBackoffMultiplier = 2.0,
-        private readonly ?Client $client = null
+        private readonly ?Client $client = null,
+        private readonly ?\Closure $timestampProvider = null
     ) {
     }
 
@@ -75,8 +76,10 @@ class CoinexHttpClient implements HttpClientInterface
         bool $authenticated
     ): array {
         $method = strtoupper($method);
+        $basePath = self::API_VERSION . $path;
         $queryString = http_build_query($query, '', '&', PHP_QUERY_RFC3986);
-        $requestPath = self::API_VERSION . $path . ($queryString !== '' ? '?' . $queryString : '');
+        $signaturePath = $basePath . ($queryString !== '' ? '?' . $queryString : '');
+        $requestPath = $basePath;
 
         $bodyJson = $body === []
             ? ''
@@ -100,12 +103,12 @@ class CoinexHttpClient implements HttpClientInterface
         }
 
         if ($authenticated) {
-            $timestamp = (int) round(microtime(true) * 1000);
+            $timestamp = $this->timestamp();
             $options['headers']['X-COINEX-KEY'] = $this->accessId;
             $options['headers']['X-COINEX-TIMESTAMP'] = (string) $timestamp;
             $options['headers']['X-COINEX-SIGN'] = Signer::sign(
                 $method,
-                $requestPath,
+                $signaturePath,
                 $bodyJson,
                 $timestamp,
                 $this->secretKey
@@ -134,6 +137,15 @@ class CoinexHttpClient implements HttpClientInterface
         } catch (GuzzleException|JsonException $exception) {
             throw ErrorMapper::from($exception->getMessage(), 0, [], $exception);
         }
+    }
+
+    private function timestamp(): int
+    {
+        if ($this->timestampProvider instanceof \Closure) {
+            return (int) ($this->timestampProvider)();
+        }
+
+        return (int) round(microtime(true) * 1000);
     }
 
     private function shouldRetry(CoinexRequestException $exception, int $attempt): bool
