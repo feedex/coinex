@@ -22,16 +22,26 @@ use Feedex\Coinex\v2\Modules\SpotOrder;
 use Feedex\Contracts\Capabilities\HasAccountModuleInterface;
 use Feedex\Contracts\Capabilities\HasAccountSubModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetDepositWithdrawalModuleInterface;
+use Feedex\Contracts\Capabilities\HasAssetExtendedBalancesModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetLoanModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetModuleInterface;
+use Feedex\Contracts\Capabilities\HasAssetSpotBalanceModuleInterface;
 use Feedex\Contracts\Capabilities\HasAssetTransferModuleInterface;
 use Feedex\Contracts\Capabilities\HasCommonModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesDealModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesMarketAnalyticsModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesMarketCoreModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesMarketModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesOrderAdvancedModuleInterface;
+use Feedex\Contracts\Capabilities\HasFuturesOrderCoreModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesOrderModuleInterface;
 use Feedex\Contracts\Capabilities\HasFuturesPositionModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotDealModuleInterface;
+use Feedex\Contracts\Capabilities\HasSpotMarketCoreModuleInterface;
+use Feedex\Contracts\Capabilities\HasSpotMarketIndexModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotMarketModuleInterface;
+use Feedex\Contracts\Capabilities\HasSpotOrderAdvancedModuleInterface;
+use Feedex\Contracts\Capabilities\HasSpotOrderCoreModuleInterface;
 use Feedex\Contracts\Capabilities\HasSpotOrderModuleInterface;
 use Feedex\Contracts\ExchangeInterface;
 
@@ -41,14 +51,24 @@ final class Coinex implements
     HasAccountModuleInterface,
     HasAccountSubModuleInterface,
     HasAssetModuleInterface,
+    HasAssetSpotBalanceModuleInterface,
+    HasAssetExtendedBalancesModuleInterface,
     HasAssetTransferModuleInterface,
     HasAssetDepositWithdrawalModuleInterface,
     HasAssetLoanModuleInterface,
     HasSpotMarketModuleInterface,
+    HasSpotMarketCoreModuleInterface,
+    HasSpotMarketIndexModuleInterface,
     HasSpotOrderModuleInterface,
+    HasSpotOrderCoreModuleInterface,
+    HasSpotOrderAdvancedModuleInterface,
     HasSpotDealModuleInterface,
     HasFuturesMarketModuleInterface,
+    HasFuturesMarketCoreModuleInterface,
+    HasFuturesMarketAnalyticsModuleInterface,
     HasFuturesOrderModuleInterface,
+    HasFuturesOrderCoreModuleInterface,
+    HasFuturesOrderAdvancedModuleInterface,
     HasFuturesDealModuleInterface,
     HasFuturesPositionModuleInterface
 {
