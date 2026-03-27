@@ -16,7 +16,7 @@
     },
     "require": {
         "php": "^8.4",
-        "feedex/feedex": "^0.1.5",
+        "feedex/feedex": "^0.1.6",
         "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
