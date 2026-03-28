@@ -278,6 +278,20 @@ This adapter provides:
 - `Feedex\Coinex\v2\Coinex` implementing Feedex exchange/capability contracts
 - `Feedex\Coinex\v2\CoinexFactory` implementing `ExchangeFactoryInterface`
 
+## v1.0.0 scope freeze (coinex)
+
+For the first stable adapter release, the v1 scope is frozen to:
+
+- current implemented CoinEx v2 module surface documented in this README
+- current typed error model and optional retry/backoff behavior
+- current payload builder helpers for spot/futures order flows
+
+Out of scope for coinex v1.0.0:
+
+- websocket/streaming APIs
+- breaking renames of public module methods
+- exchange-wide DTO normalization layer
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md) for clear per-release evolution of this plugin.
