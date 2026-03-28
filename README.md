@@ -12,7 +12,7 @@ composer require feedex/feedex feedex/coinex
 
 ## Compatibility
 
-- `feedex/coinex ^0.2` requires `feedex/feedex ^0.1.6`
+- `feedex/coinex ^1.0` requires `feedex/feedex ^1.0`
 
 ## Usage (recommended via Feedex core)
 
