@@ -7,9 +7,19 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0
 ## [Unreleased]
 
 ### Docs
+- Add explicit coinex v1.0.0 scope freeze notes in README.
+
+## [0.2.9]
+
+### Changed
+- Adopt granular core capability interfaces from `feedex/feedex ^0.1.6`.
+
+## [0.2.8]
+
+### Docs
 - Add endpoint coverage table in README.
 - Add runnable `examples/` scripts for balances, spot order, and futures order.
-- Add this changelog file for clearer release history.
+- Add changelog file for clearer release history.
 
 ## [0.2.7]
 
