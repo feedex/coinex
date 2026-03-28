@@ -6,8 +6,18 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0
 
 ## [Unreleased]
 
+## [1.0.0]
+
+### Stable release
+- Promoted CoinEx adapter API surface to stable `1.0.0`.
+- Updated core dependency to `feedex/feedex ^1.0`.
+- Preserved existing documented module/capability surface finalized during freeze.
+
+## [0.2.10]
+
 ### Docs
-- Add explicit coinex v1.0.0 scope freeze notes in README.
+- Added explicit coinex v1.0.0 scope freeze notes.
+- Aligned changelog entries for pre-v1 release stream.
 
 ## [0.2.9]
 
